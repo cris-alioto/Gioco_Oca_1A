@@ -4,8 +4,7 @@ import java.util.Scanner;
 public class Gioco {
 
     private static Giocatori giocatore = new Giocatori();
-    private Tabellone tab = new Tabellone();
-    private Salvataggio partita = new Salvataggio();
+    private static Tabellone tab = new Tabellone();
 
     public static void inizio(){
         Scanner in = new Scanner(System.in);
@@ -14,7 +13,7 @@ public class Gioco {
         System.out.println("Premi 'c' per caricare una partita già esistente");
         System.out.println("premi 'n' per iniziare una nuova partita");
         do{ key = in.next().charAt(0); }while(key!='n' && key!='c');
-        if(key=='c') partita.carica(giocatore);
+        if(key=='c') Salvataggio.carica(giocatore);
         else{
             System.out.println("Inserisci il tuo nome: ");
             do{ nome = in.nextLine(); }while(nome.isEmpty());
@@ -46,8 +45,8 @@ public class Gioco {
                      menù(); return;
                  }
                  case 'm' -> { System.out.println(giocatore); }
-                 case 's' -> { System.out.println(partita.salva(giocatore)); }
-                 case 'e' -> { System.out.println(partita.esci(giocatore)); }
+                 case 's' -> { System.out.println(Salvataggio.salva(giocatore)); }
+                 case 'e' -> { System.out.println(Salvataggio.esci(giocatore)); }
                  case 'q' -> { System.exit(0); }
              }
         }while(key!='g');

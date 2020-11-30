@@ -16,5 +16,4 @@
 	- Mammei = oggetto Casella e Tabellone
 	- Di Napoli = oggetto Giocatore
 	- Melotti = oggetto Salvataggio
-	In seguito, Di Napoli e Melotti si occuperanno principalmente
-	dell'implementazione grafica (JavaFX)
+	- In seguito, Di Napoli e Melotti si occuperanno principalmente dell'implementazione grafica (JavaFX)

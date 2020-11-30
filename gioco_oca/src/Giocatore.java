@@ -1,23 +1,23 @@
 import java.util.Random;
 public class Giocatore {
 
-    String nome;
-    boolean online;
-    int posizione;
-    int bloccato;
-    int vittorie;
+   public String nome;
+   public boolean online;
+   public int posizione;
+   public int bloccato;
+   public int vittorie;
 
-    int tiraDado() {
+    private int tiraDado() {
         Random rand = new Random();
         int a = rand.nextInt(6) + 1;
         int b = rand.nextInt(6) + 1;
         int c = a + b;
         return c;
     }
-        String muovi(){
+        public String muovi(){
 int dado=tiraDado();
 posizione=posizione+dado;
-return "il giocatore si muove di"+tiraDado()+"caselle";
+return "il giocatore si muove di"+dado+"caselle";
 
         }
     public Giocatore(String nome){

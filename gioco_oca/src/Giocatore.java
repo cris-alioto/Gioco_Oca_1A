@@ -1,11 +1,11 @@
 import java.util.Random;
 public class Giocatore {
 
-   public String nome;
-   public boolean online;
-   public int posizione;
-   public int bloccato;
-   public int vittorie;
+   private String nome;
+   private boolean online;
+   private int posizione;
+   private int bloccato;
+   private int vittorie;
 
     private int tiraDado() {
         Random rand = new Random();

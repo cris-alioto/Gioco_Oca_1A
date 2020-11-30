@@ -36,7 +36,7 @@ public class Gioco {
              key = in.next().charAt(0);
              switch(key){
                  case 'a' -> {
-                     if(giocatore.check()){
+                     if(giocatore.checkPosti()){
                          System.out.println("Inserisci il nome del giocatore: ");
                          do{ nome = in.nextLine(); }while(nome.isEmpty());
                          giocatore.aggiungiGiocatore(nome);
@@ -54,18 +54,25 @@ public class Gioco {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        char key;
+        String temp; char key;
         inizio();
         menù();
         do{
-            System.out.print(giocatore.getTurno());
-            System.out.println("Premi 't' per tirare i dadi");
+            System.out.print("è il turno di " + giocatore.getNome());
+            System.out.println("Premi 'c' per continuare");
             System.out.println("Premi 'm' per andare al menù principale");
             System.out.println("Premi 'q' per terminare il programma (per tutti)");
             do{ key = in.next().charAt(0); }while(key!='t' && key!='m');
             if(key=='m') menù();
-            else System.out.println(giocatore.muovi());
+            if(key=='c'){
+                if(giocatore.isBloccato()==null){
+                    System.out.println(giocatore.muovi());
+                    System.out.println(tab.effetto());
+                }
+                else System.out.println(giocatore.aggiornaBloccato());
+            }
         }while(key!='q');
+        System.out.println("Sei uscito dal gioco");
     }
 
 }

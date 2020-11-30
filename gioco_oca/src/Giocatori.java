@@ -16,24 +16,32 @@ public class Giocatori {
     @Override
     public String toString() {
         String giocatori = "Giocatori: " + "\n";
-        for(int i = 0; i<4; i++) giocatori += n[i].getNome() + " | Online: " + n[i].isOnline() + "\n";
+        for(int i = 0; i<4; i++) giocatori += n[i].getNome() + " | Online: " + n[i].isOnline() + "\n" + "| vittorie: " + n[i].getVittorie() + " | posizione: " + n[i].getPosizione();
         return giocatori;
     }
 
     //Getters
-    public String getTurno(){
-        if(n[turno].isOnline) return "E' il turno di " + n[turno].getNome();
+    public int getTurno(){
+        if(n[turno].isOnline) return turno;
         aggiornaTurno();
         return getTurno();
     }
-
+    public String getNome(){ return n[turno].getNome(); }
+    public String isBloccato(){
+        if(n[turno].getBloccato()!=0){
+            if(n[turno].getBloccato()>0)
+                return "il giocatore è bloccato per altri " + n[turno].getBloccato() + " turni";
+            else return "il giocatore è nel pozzo";
+        }
+        return null;
+    }
     public String getPodio(){
         return "Il giocatore " + n[podio].getNome() + " è sul podio con " + n[podio].getVittorie() + " vittore!";
     }
 
     //
 
-    public boolean check(){
+    public boolean checkPosti(){
         if(counter>3){
             for(int i = 0; i<4; i++){
                 if(!n[i].isOnline) return true;
@@ -72,6 +80,11 @@ public class Giocatori {
     public void aggiornaTurno(){
         if(turno<3) turno++;
         else turno = 0;
+    }
+
+    public String aggiornaBloccato(){
+        n[turno].setBloccato(n[turno].getBloccato()-1);
+        return isBloccato();
     }
 
     public String muovi(){

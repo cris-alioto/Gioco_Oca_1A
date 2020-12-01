@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Gioco {
 
     private static Giocatori giocatore = new Giocatori();
-    private static Tabellone tab = new Tabellone();
 
     public static void inizio(){
         Scanner in = new Scanner(System.in);
@@ -44,7 +43,10 @@ public class Gioco {
                      else System.out.println("Limite dei giocatori raggiunto");
                      menù(); return;
                  }
-                 case 'm' -> { System.out.println(giocatore); }
+                 case 'm' -> {
+                     System.out.println(giocatore);
+                     System.out.println(giocatore.aggiornaPodio());
+                 }
                  case 's' -> { System.out.println(Salvataggio.salva(giocatore)); }
                  case 'e' -> { System.out.println(Salvataggio.esci(giocatore)); }
                  case 'q' -> { System.exit(0); }
@@ -67,7 +69,7 @@ public class Gioco {
             if(key=='c'){
                 if(giocatore.isBloccato()==null){
                     System.out.println(giocatore.muovi());
-                    System.out.println(tab.effetto());
+                    System.out.println(Tabellone.effetto());
                 }
                 else System.out.println(giocatore.aggiornaBloccato());
             }

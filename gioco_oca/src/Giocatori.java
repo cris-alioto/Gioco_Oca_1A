@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Giocatori {
+public class Giocatori implements java.io.Serializable {
 
     private Giocatore[] n = new Giocatore[4];
     private int counter;
@@ -22,11 +22,13 @@ public class Giocatori {
 
     //Getters
     public int getTurno(){
-        if(n[turno].isOnline) return turno;
+        if(n[turno].isOnline()) return turno;
         aggiornaTurno();
         return getTurno();
     }
+
     public String getNome(){ return n[turno].getNome(); }
+
     public String isBloccato(){
         if(n[turno].getBloccato()!=0){
             if(n[turno].getBloccato()>0)
@@ -35,16 +37,15 @@ public class Giocatori {
         }
         return null;
     }
+
     public String getPodio(){
         return "Il giocatore " + n[podio].getNome() + " è sul podio con " + n[podio].getVittorie() + " vittore!";
     }
 
-    //
-
     public boolean checkPosti(){
         if(counter>3){
             for(int i = 0; i<4; i++){
-                if(!n[i].isOnline) return true;
+                if(!n[i].isOnline()) return true;
             }
             return false;
         }
@@ -68,10 +69,21 @@ public class Giocatori {
         return null;
     }
 
+    public void caricaGiocatori(Giocatore g0, Giocatore g1, Giocatore g2, Giocatore g3){
+        n[0] = g0;
+        n[1] = g1;
+        n[2] = g2;
+        n[3] = g3;
+    }
+
+    public Giocatore getGiocatori(int p){
+        return n[p];
+    }
+
     public String aggiornaPodio(){
         int max = 0;
         for(int i = 0; i<3; i++){
-            if(n[i].getVittorie()>n[i+1].getVittorie) max = i;
+            if(n[i].getVittorie()>n[i+1].getVittorie()) max = i;
             else max = i+1;
         }
         return getPodio();

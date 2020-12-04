@@ -7,7 +7,7 @@ public class Giocatore {
    private int bloccato;
    private int vittorie;
 private int risultato;
-
+int midispiace;
     private int tiraDado() {
         Random rand = new Random();
         int a = rand.nextInt(6) + 1;
@@ -19,6 +19,10 @@ private int risultato;
 int dado=tiraDado();
 posizione=posizione+dado;
 risultato = dado;
+if(posizione>64){
+    midispiace=posizione-64;
+    posizione=posizione-midispiace;
+}
 return "il giocatore si muove di"+dado+"caselle";
 
         }

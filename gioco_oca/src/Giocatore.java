@@ -6,6 +6,7 @@ public class Giocatore {
    private int posizione;
    private int bloccato;
    private int vittorie;
+private int risultato;
 
     private int tiraDado() {
         Random rand = new Random();
@@ -17,6 +18,7 @@ public class Giocatore {
         public String muovi(){
 int dado=tiraDado();
 posizione=posizione+dado;
+risultato = dado;
 return "il giocatore si muove di"+dado+"caselle";
 
         }
@@ -32,6 +34,7 @@ return "il giocatore si muove di"+dado+"caselle";
         this.bloccato = bloccato;
         this.vittorie = vittorie;
     }
+public int getRisultato() { return risultato; }
 
     public String getNome() {
         return nome;

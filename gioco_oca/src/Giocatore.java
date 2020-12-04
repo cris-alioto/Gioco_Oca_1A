@@ -24,6 +24,9 @@ if(posizione>63){
     midispiace=posizione-63;
     posizione=63-midispiace;
 }
+if (posizione==63){
+    return "we guaglio hai vinto";
+}
 return "il giocatore si muove di"+dado+"caselle";
 
         }

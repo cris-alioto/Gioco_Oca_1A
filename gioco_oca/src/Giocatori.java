@@ -22,9 +22,7 @@ public class Giocatori implements java.io.Serializable {
 
     //Getters
     public int getTurno(){
-        if(n[turno].isOnline()) return turno;
-        aggiornaTurno();
-        return getTurno();
+        return turno;
     }
 
     public String getNome(){ return n[turno].getNome(); }
@@ -40,6 +38,10 @@ public class Giocatori implements java.io.Serializable {
 
     public String getPodio(){
         return "Il giocatore " + n[podio].getNome() + " è sul podio con " + n[podio].getVittorie() + " vittore!";
+    }
+
+    public int getPosizione(){
+        return n[turno].getPosizione();
     }
 
     public boolean checkPosti(){
@@ -76,9 +78,7 @@ public class Giocatori implements java.io.Serializable {
         n[3] = g3;
     }
 
-    public Giocatore getGiocatori(int p){
-        return n[p];
-    }
+    public Giocatore getGiocatori(int p){ return n[p]; }
 
     public String aggiornaPodio(){
         int max = 0;
@@ -92,6 +92,7 @@ public class Giocatori implements java.io.Serializable {
     public void aggiornaTurno(){
         if(turno<3) turno++;
         else turno = 0;
+        if(!n[turno].isOnline()) aggiornaTurno();
     }
 
     public String aggiornaBloccato(){

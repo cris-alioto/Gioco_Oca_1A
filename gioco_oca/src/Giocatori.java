@@ -100,10 +100,7 @@ public class Giocatori implements java.io.Serializable {
     }
 
     public String muovi(){
-        String str;
-        str = n[turno].muovi();
-        aggiornaTurno();
-        return str;
+        return n[turno].muovi();
     }
 
 }

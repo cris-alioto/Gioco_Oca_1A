@@ -72,6 +72,7 @@ public class Gioco {
                     System.out.println(Tabellone.effetto());
                 }
                 else System.out.println(giocatore.aggiornaBloccato());
+                giocatore.aggiornaTurno();
             }
         }while(key!='q');
         System.out.println("Sei uscito dal gioco");

@@ -57,25 +57,36 @@ public class Gioco {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String temp; char key;
-        inizio();
-        menù();
-        do{
-            System.out.print("è il turno di " + giocatore.getNome());
-            System.out.println("Premi 'c' per continuare");
-            System.out.println("Premi 'm' per andare al menù principale");
-            System.out.println("Premi 'q' per terminare il programma (per tutti)");
-            do{ key = in.next().charAt(0); }while(key!='t' && key!='m');
-            if(key=='m') menù();
-            if(key=='c'){
-                if(giocatore.isBloccato()==null){
-                    System.out.println(giocatore.muovi());
-                    System.out.println(Tabellone.effetto());
+        do {
+            inizio();
+            menù();
+            do {
+                System.out.print("è il turno di " + giocatore.getNome());
+                System.out.println("Premi 'c' per continuare");
+                System.out.println("Premi 'm' per andare al menù principale");
+                System.out.println("Premi 'q' per terminare il programma (per tutti)");
+                do {
+                    key = in.next().charAt(0);
+                } while (key != 't' && key != 'm');
+                if (key == 'm') menù();
+                if (key == 'c') {
+                    if (giocatore.isBloccato() == null) {
+                        System.out.println(giocatore.muovi());
+                        if (giocatore.getPosizione() == 63) {
+                            giocatore.aggiornaVittoria();
+                            giocatore.aggiornaPodio();
+                            key = 'q';
+                        }
+                        System.out.println(Tabellone.effetto());
+                    } else System.out.println(giocatore.aggiornaBloccato());
+                    giocatore.aggiornaTurno();
                 }
-                else System.out.println(giocatore.aggiornaBloccato());
-                giocatore.aggiornaTurno();
-            }
-        }while(key!='q');
-        System.out.println("Sei uscito dal gioco");
+            } while (key != 'q');
+            System.out.println("vuoi/volete giocare di nuovo? s - n");
+            do {
+                key = in.next().charAt(0);
+            } while (key != 's' && key != 'n');
+        }while(key!='n');
     }
 
 }

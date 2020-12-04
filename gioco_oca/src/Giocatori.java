@@ -21,9 +21,7 @@ public class Giocatori implements java.io.Serializable {
     }
 
     //Getters
-    public int getTurno(){
-        return turno;
-    }
+    public int getTurno(){ return turno; }
 
     public String getNome(){ return n[turno].getNome(); }
 
@@ -100,6 +98,7 @@ public class Giocatori implements java.io.Serializable {
         return isBloccato();
     }
 
+    public void aggiornaVittoria(){ n[turno].setVittorie(n[turno].getVittorie()+1); }
     public String muovi(){
         return n[turno].muovi();
     }

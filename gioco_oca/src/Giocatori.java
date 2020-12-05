@@ -41,8 +41,11 @@ public class Giocatori implements java.io.Serializable {
     public int getPosizione(){
         return n[turno].getPosizione();
     }
-
+    public int getRisultato() { return n[turno].getRisultato(); }
     public int getCounter(){ return counter; }
+
+    public void setPosizione(int p){ n[turno].setPosizione(p); }
+    public void setBloccato(int b){ n[turno].setBloccato(b); }
 
     public boolean checkPosti(){
         if(counter>3){

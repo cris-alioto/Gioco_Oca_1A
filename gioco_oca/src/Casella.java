@@ -14,7 +14,7 @@ public class Casella {
     }
 
 
-    public String fai_Effetto(Giocatore g,Giocatore[] n,int counter,int w){
+    public String fai_Effetto(Giocatori g,Giocatore[] n,int counter,int w){
         if(speciale==false){return "casella normale";}
         else if (getEffetto()==Effetto.OCA) {
             int k=w;

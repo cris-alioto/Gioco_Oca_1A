@@ -79,7 +79,7 @@ public class Gioco {
                             key = 'q';
                         }
                         System.out.println(tab.getPercorso()[giocatore.getN()[giocatore.getTurno()].getPosizione()].
-                                fai_Effetto(giocatore.getN()[giocatore.getTurno()], giocatore.getN(), giocatore.getCounter(),0));
+                                fai_Effetto(giocatore, giocatore.getN(), giocatore.getCounter(),0));
                     } else System.out.println(giocatore.aggiornaBloccato());
                     giocatore.aggiornaTurno();
                 }

@@ -98,6 +98,12 @@ public class Giocatori implements java.io.Serializable {
         return isBloccato();
     }
 
+    public void azzeraPozzo(){
+        for(int i = 0; i<4; i++){
+            if(n[i].getBloccato()==-1) n[i].setBloccato(0);
+        }
+    }
+
     public void aggiornaVittoria(){ n[turno].setVittorie(n[turno].getVittorie()+1); }
     public String muovi(){
         return n[turno].muovi();

@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Gioco {
 
     private static Giocatori giocatore = new Giocatori();
+    private static Tabellone tab = new Tabellone();
 
     public static void inizio(){
         Scanner in = new Scanner(System.in);
@@ -77,7 +78,8 @@ public class Gioco {
                             giocatore.aggiornaPodio();
                             key = 'q';
                         }
-                        System.out.println(Tabellone.effetto());
+                        System.out.println(tab.getPercorso()[giocatore.getN()[giocatore.getTurno()].getPosizione()].
+                                fai_Effetto(giocatore.getN()[giocatore.getTurno()], giocatore.getN(), giocatore.getCounter(),0));
                     } else System.out.println(giocatore.aggiornaBloccato());
                     giocatore.aggiornaTurno();
                 }

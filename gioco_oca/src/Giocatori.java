@@ -22,7 +22,7 @@ public class Giocatori implements java.io.Serializable {
 
     //Getters
     public int getTurno(){ return turno; }
-
+    public Giocatore[] getN(){ return n; }
     public String getNome(){ return n[turno].getNome(); }
 
     public String isBloccato(){
@@ -41,6 +41,8 @@ public class Giocatori implements java.io.Serializable {
     public int getPosizione(){
         return n[turno].getPosizione();
     }
+
+    public int getCounter(){ return counter; }
 
     public boolean checkPosti(){
         if(counter>3){

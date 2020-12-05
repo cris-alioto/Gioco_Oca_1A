@@ -1,5 +1,5 @@
 import java.io.*;
-public class Salvataggio {
+public class implements Serializable Salvataggio {
     public static String Salva (Giocatori g) {
     //questo metodo salva la posizione dei giocatori
         try{
@@ -11,10 +11,19 @@ public class Salvataggio {
             g.getPodio();
             //visto che per questa parte mi sono avventurato nell'internet indonesiano, non mi aspetto che sia
             //molto comprensibile. Enjoy
-        FileWriter fstream = new FileWriter("Salvataggio.txt");
-        BufferedWriter out = new BufferedWriter(fstream);
-        out.write("Qui inserirò le informazioni del giocatore");
-        out.close();}
+        try {
+        FileOutputStream fileOut =
+        new FileOutputStream("salvataggio.ser");
+        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        out.writeObject(e);
+        out.close();
+        fileOut.close();
+        System.out.printf("Serialized data is saved in salvataggio.ser");
+        } catch (IOException i) {
+        i.printStackTrace();
+        }
+        }
+        }
     }
     public static String Carica (Giocatori g) {
     //questo metodo carica la posizione dei giocatori
@@ -24,6 +33,21 @@ public class Salvataggio {
         Giocatore n4 = g.setGiocatore(4);
         g.setTurno();
         g.setPodio();
+
+        try {
+        FileInputStream fileIn = new FileInputStream("salvataggio.ser");
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        g = (Giocatore) in.readObject();
+        in.close();
+        fileIn.close();
+        } catch (IOException i) {
+        i.printStackTrace();
+        return;
+        } catch (ClassNotFoundException c) {
+        System.out.println("ERRORE SALVATAGGIO NOT FOUND");
+        c.printStackTrace();
+        return;
+        }
     }
     public static String Esci (Giocatori g) {
     //questo metodo fa uscire il giocatore

@@ -32,7 +32,7 @@ public class Casella {
         else if(getEffetto()==Effetto.POZZO){
             g.azzeraPozzo();
             g.setBloccato(-1);
-            return "fermi fino a quando non arriva nella casella un'altro giocatore";
+            return "fermi fino a quando non arriva nella casella un altro giocatore";
         }
         else if(getEffetto()==Effetto.LABIRINTO){
             g.setPosizione(39);

@@ -12,7 +12,7 @@ public class Tabellone {
     public void setPercorso(Casella[] percorso) { this.percorso = percorso; }
 
     public void inizializzaCasella(Casella[] percorso){
-        for(int i=0;i<Max_cas;i++){
+        for(int i=0;i<Max_cas;i++){ //switch forse?
             if (i== 6 || i% 9 == 0 || i==5 || i%9==5) {
                 percorso[i]=new Casella(Effetto.OCA);
             }

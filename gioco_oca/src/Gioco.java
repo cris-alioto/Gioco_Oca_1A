@@ -1,6 +1,10 @@
 
 import java.util.Scanner;
 
+// In generale mi pare bene, ho messo un paio di commenti qui e là, guardateli
+// UN ALTRO si scrive senza apostrofo
+
+
 public class Gioco {
 
     private static Giocatori giocatore = new Giocatori();
@@ -14,6 +18,7 @@ public class Gioco {
         System.out.println("premi 'n' per iniziare una nuova partita");
         do{ key = in.next().charAt(0); }while(key!='n' && key!='c');
         if(key=='c') Salvataggio.carica(giocatore);
+        //Per  permettere la compilazione e le prove fare un metodo carica che non nulla ('mock')
         else{
             System.out.println("Inserisci il tuo nome: ");
             do{ nome = in.nextLine(); }while(nome.isEmpty());

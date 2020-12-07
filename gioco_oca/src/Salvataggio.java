@@ -7,8 +7,6 @@ public class implements Serializable Salvataggio {
             Giocatore n2 = g.getGiocatore(2);
             Giocatore n3 = g.getGiocatore(3);
             Giocatore n4 = g.getGiocatore(4);
-            g.getTurno();
-            g.getPodio();
             //visto che per questa parte mi sono avventurato nell'internet indonesiano, non mi aspetto che sia
             //molto comprensibile. Enjoy
         try {

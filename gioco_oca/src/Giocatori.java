@@ -7,6 +7,9 @@ public class Giocatori implements java.io.Serializable {
     private int turno;
     private int podio;
 
+    /*
+    è il Costruttore, inizializza i giocatori "vuoti"
+     */
     public Giocatori(){
         counter = 0;
         podio = 0;
@@ -14,6 +17,10 @@ public class Giocatori implements java.io.Serializable {
         for(int i = 0; i<4; i++) n[i] = new Giocatore("vuoto", false, 0, 0, 0);
     }
 
+    /*
+    è il toString
+    @return restituisce una stringa che elenca i giocatori quando l'oggetto viene richiamato
+     */
     @Override
     public String toString() {
         String giocatori = "Giocatori: " + "\n";
@@ -22,9 +29,11 @@ public class Giocatori implements java.io.Serializable {
     }
 
     //Getters
+    /* @return il turno attuale */
     public int getTurno(){ return turno; }
-    public Giocatore[] getN(){ return n; }
+    /* @return il nome del giocatore che sta giocando */
     public String getNome(){ return n[turno].getNome(); }
+    /* @return una stringa che dice se il giocatore è bloccato oppure no */
     public String isBloccato(){
         if(n[turno].getBloccato()!=0){
             if(n[turno].getBloccato()>0)
@@ -33,18 +42,27 @@ public class Giocatori implements java.io.Serializable {
         }
         return null;
     }
+    /* @return il nome del giocatore che è sul podio */
     public String getPodio(){
         return "Il giocatore " + n[podio].getNome() + " è sul podio con " + n[podio].getVittorie() + " vittore!";
     }
-    public int getPosizione(){
-        return n[turno].getPosizione();
-    }
+    /* @return la posizione del giocatore che sta giocando */
+    public int getPosizione(){ return n[turno].getPosizione(); }
+    /* @return l'ultimo tiro di dadi che il giocatore attuale ha eseguito */
     public int getRisultato() { return n[turno].getRisultato(); }
+    /* @return il numero di giocatori che sta giocando */
     public int getCounter(){ return counter; }
-    public Giocatore getGiocatori(int p){ return n[p]; }
+    /* @return l'array di Giocatore */
+    public Giocatore[] getN(){ return n; }
+    /*
+     @param p è la posizione del giocatore
+     @return il giocatore alla posizione p
+     */
     public Giocatore getGiocatore(int p){ return n[p]; }
     //Setters
+    /* @param p è la posizione che si vuole settare al giocatore attuale */
     public void setPosizione(int p){ n[turno].setPosizione(p); }
+    /* @param b indica di quanto si vuole bloccare il giocatore (3,0,-1) */
     public void setBloccato(int b){ n[turno].setBloccato(b); }
 
     //

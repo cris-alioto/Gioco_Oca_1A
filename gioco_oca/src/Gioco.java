@@ -10,6 +10,9 @@ public class Gioco {
     private static Giocatori giocatore = new Giocatori();
     private static Tabellone tab = new Tabellone();
 
+    /*
+    Serve solo all'inizio del gioco
+     */
     public static void inizio(){
         Scanner in = new Scanner(System.in);
         String nome; char key;
@@ -27,6 +30,9 @@ public class Gioco {
         System.out.println("Buon divertimento!" + "\n");
     }
 
+    /*
+    Rappresenta il menù di gioco
+     */
     public static void menù(){
         Scanner in = new Scanner(System.in);
         String nome; char key;
@@ -60,6 +66,9 @@ public class Gioco {
         }while(key!='g');
     }
 
+    /*
+    Gestisce l'intero programma gestendo i turni, i giocatori e richiamando gli effetti delle caselle
+     */
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String temp; char key;
@@ -70,7 +79,7 @@ public class Gioco {
                 System.out.println("\nè il turno di " + giocatore.getNome() + '!');
                 System.out.println("Premi 'c' per continuare");
                 System.out.println("Premi 'm' per andare al menù principale");
-                System.out.println("Premi 'q' per terminare il programma (per tutti)");
+                System.out.println("Premi 'q' per terminare la partita (per tutti)");
                 do {
                     key = in.next().charAt(0);
                 } while (key != 'c' && key != 'm' && key != 'q');

@@ -85,7 +85,7 @@ public class Gioco {
                 } while (key != 'c' && key != 'm' && key != 'q');
                 if (key == 'm') menù();
                 if (key == 'c') {
-                    if (giocatore.isBloccato() == null) {
+                    if (giocatore.isBloccato().equals("il giocatore " + giocatore.getNome() + " non è più bloccato")) {
                         System.out.println(giocatore.muovi());
                         if (giocatore.getPosizione() == 63) {
                             giocatore.aggiornaVittoria();

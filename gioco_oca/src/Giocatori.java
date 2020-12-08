@@ -11,12 +11,13 @@ public class Giocatori implements java.io.Serializable {
         counter = 0;
         podio = 0;
         turno = 0;
+        for(int i = 0; i<4; i++) n[i] = new Giocatore("vuoto", false, 0, 0, 0);
     }
 
     @Override
     public String toString() {
         String giocatori = "Giocatori: " + "\n";
-        for(int i = 0; i<4; i++) giocatori += n[i].getNome() + " | Online: " + n[i].isOnline() + "\n" + "| vittorie: " + n[i].getVittorie() + " | posizione: " + n[i].getPosizione();
+        for(int i = 0; i<4; i++) giocatori += n[i].getNome() + " | Online: " + n[i].isOnline() + "| vittorie: " + n[i].getVittorie() + " | posizione: " + n[i].getPosizione() + "\n";
         return giocatori;
     }
 
@@ -24,7 +25,6 @@ public class Giocatori implements java.io.Serializable {
     public int getTurno(){ return turno; }
     public Giocatore[] getN(){ return n; }
     public String getNome(){ return n[turno].getNome(); }
-
     public String isBloccato(){
         if(n[turno].getBloccato()!=0){
             if(n[turno].getBloccato()>0)
@@ -33,19 +33,21 @@ public class Giocatori implements java.io.Serializable {
         }
         return null;
     }
-
     public String getPodio(){
         return "Il giocatore " + n[podio].getNome() + " è sul podio con " + n[podio].getVittorie() + " vittore!";
     }
-
     public int getPosizione(){
         return n[turno].getPosizione();
     }
     public int getRisultato() { return n[turno].getRisultato(); }
     public int getCounter(){ return counter; }
-
+    public Giocatore getGiocatori(int p){ return n[p]; }
+    public Giocatore getGiocatore(int p){ return n[p]; }
+    //Setters
     public void setPosizione(int p){ n[turno].setPosizione(p); }
     public void setBloccato(int b){ n[turno].setBloccato(b); }
+
+    //
 
     public boolean checkPosti(){
         if(counter>3){
@@ -80,8 +82,6 @@ public class Giocatori implements java.io.Serializable {
         n[2] = g2;
         n[3] = g3;
     }
-
-    public Giocatore getGiocatori(int p){ return n[p]; }
 
     public String aggiornaPodio(){
         int max = 0;

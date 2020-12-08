@@ -17,7 +17,7 @@ public class Gioco {
         System.out.println("Premi 'c' per caricare una partita già esistente");
         System.out.println("premi 'n' per iniziare una nuova partita");
         do{ key = in.next().charAt(0); }while(key!='n' && key!='c');
-        if(key=='c') Salvataggio.carica(giocatore);
+        if(key=='c') System.out.println(Salvataggio.carica(giocatore));
         //Per  permettere la compilazione e le prove fare un metodo carica che non nulla ('mock')
         else{
             System.out.println("Inserisci il tuo nome: ");
@@ -67,13 +67,13 @@ public class Gioco {
             inizio();
             menù();
             do {
-                System.out.print("è il turno di " + giocatore.getNome());
+                System.out.println("\nè il turno di " + giocatore.getNome() + '!');
                 System.out.println("Premi 'c' per continuare");
                 System.out.println("Premi 'm' per andare al menù principale");
                 System.out.println("Premi 'q' per terminare il programma (per tutti)");
                 do {
                     key = in.next().charAt(0);
-                } while (key != 't' && key != 'm');
+                } while (key != 'c' && key != 'm' && key != 'q');
                 if (key == 'm') menù();
                 if (key == 'c') {
                     if (giocatore.isBloccato() == null) {

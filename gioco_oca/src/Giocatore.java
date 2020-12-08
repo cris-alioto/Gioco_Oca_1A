@@ -30,10 +30,7 @@ if (posizione==63){
 return "il giocatore si muove di"+dado+"caselle";
 
         }
-    public Giocatore(String nome){
-        this.nome = nome;
-    }
-
+    public Giocatore(String nome){ this.nome = nome; online = true; }
 
     public Giocatore(String nome, boolean online, int posizione, int bloccato, int vittorie) {
         this.nome = nome;

@@ -20,6 +20,11 @@ public class Casella {
             int k=w;
             k++;
             g.setPosizione(g.getPosizione()+g.getRisultato());
+            if(g.getPosizione()>63){
+                int midispiace;
+                midispiace=g.getPosizione()-63;
+                g.setPosizione(63-midispiace);
+            }
             if(k==0){
                 fai_Effetto(g,n,counter,k++);
             }

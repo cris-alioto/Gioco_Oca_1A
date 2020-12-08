@@ -27,7 +27,7 @@ if(posizione>63){
 if (posizione==63){
     return "we guaglio hai vinto";
 }
-return "il giocatore si muove di"+dado+"caselle";
+return "il giocatore si muove di "+dado+" caselle, è alla posizione " + posizione;
 
         }
     public Giocatore(String nome){ this.nome = nome; online = true; }
@@ -83,13 +83,11 @@ public int getRisultato() { return risultato; }
 
     @Override
     public String toString() {
-        return "Giocatore{" +
-                "nome='" + nome + '\'' +
-                ", online=" + online +
-                ", posizione=" + posizione +
-                ", bloccato=" + bloccato +
-                ", vittorie=" + vittorie +
-                '}';
+        return nome +
+                " | online = " + online +
+                " | posizione = " + posizione +
+                " | bloccato = " + bloccato +
+                " | vittorie = " + vittorie + "\n";
     }
 
 }

@@ -17,7 +17,7 @@ public class Giocatori implements java.io.Serializable {
     @Override
     public String toString() {
         String giocatori = "Giocatori: " + "\n";
-        for(int i = 0; i<4; i++) giocatori += n[i].getNome() + " | Online: " + n[i].isOnline() + "| vittorie: " + n[i].getVittorie() + " | posizione: " + n[i].getPosizione() + "\n";
+        for(int i = 0; i<4; i++) giocatori += n[i];
         return giocatori;
     }
 

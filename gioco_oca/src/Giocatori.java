@@ -7,8 +7,8 @@ public class Giocatori implements java.io.Serializable {
     private int turno;
     private int podio;
 
-    /*
-    è il Costruttore, inizializza i giocatori "vuoti"
+    /**
+     * e' il Costruttore, inizializza i giocatori "vuoti"
      */
     public Giocatori(){
         counter = 0;
@@ -17,9 +17,9 @@ public class Giocatori implements java.io.Serializable {
         for(int i = 0; i<4; i++) n[i] = new Giocatore("vuoto", false, 0, 0, 0);
     }
 
-    /*
-    è il toString
-    @return restituisce una stringa che elenca i giocatori quando l'oggetto viene richiamato
+    /**
+     * e' il toString
+     * @return una stringa che elenca i giocatori quando l'oggetto viene richiamato
      */
     @Override
     public String toString() {
@@ -29,16 +29,28 @@ public class Giocatori implements java.io.Serializable {
     }
 
     //Getters
-    /* @return il turno attuale */
+    /**
+     * Serve a sapere il turno attuale
+     * @return il turno attuale
+     */
     public int getTurno(){ return turno; }
 
-    /* @return il nome del giocatore che sta giocando */
+    /**
+     * Serve a sapere il nome del giocatore
+     * @return il nome del giocatore che sta giocando
+     */
     public String getNome(){ return n[turno].getNome(); }
 
-    /* @return boolean bloccato del giocatore che sta giocando */
+    /**
+     * Serve a sapere di quanto il giocatore è bloccato
+     * @return boolean bloccato del giocatore che sta giocando
+     */
     public int getBloccato(){ return n[turno].getBloccato(); }
 
-    /* @return una stringa che dice se il giocatore è bloccato oppure no */
+    /**
+     * Serve a sapere se il giocatore è bloccato o no
+     * @return una stringa che dice se il giocatore è bloccato oppure no
+     */
     public String isBloccato(){
         if(getBloccato()!=0){
             if(getBloccato()>0)
@@ -48,37 +60,62 @@ public class Giocatori implements java.io.Serializable {
         return "il giocatore " + getNome() + " non è più bloccato";
     }
 
-    /* @return il nome del giocatore che è sul podio */
+    /**
+     * Serve ad ottenere il nome del giocatore che è sul podio
+     * @return il nome del giocatore che e' sul podio
+     */
     public String getPodio(){ return "Il giocatore " + n[podio].getNome() + " è sul podio con " + n[podio].getVittorie() + " vittore!"; }
 
-    /* @return la posizione del giocatore che sta giocando */
+    /**
+     * Serve ad ottenere la posizione del giocatore attuale
+     * @return la posizione del giocatore che sta giocando
+     */
     public int getPosizione(){ return n[turno].getPosizione(); }
 
-    /* @return l'ultimo tiro di dadi che il giocatore attuale ha eseguito */
+    /**
+     * Serve ad ottenere l'ultimo tiro di dadi eseguito
+     * @return l'ultimo tiro di dadi che il giocatore attuale ha eseguito
+     */
     public int getRisultato() { return n[turno].getRisultato(); }
 
-    /* @return il numero di giocatori che sta giocando */
+    /**
+     * Serve a ottenere il numero di player in partita
+     * @return il numero di giocatori che sta giocando
+     */
     public int getCounter(){ return counter; }
 
-    /* @return l'array di Giocatore */
+    /**
+     * Serve ad ottenere l'array di Giocatore
+     * @return l'array di Giocatore
+     */
     public Giocatore[] getN(){ return n; }
 
-    /*
-     @param p è la posizione del giocatore
-     @return il giocatore alla posizione p
+    /**
+     * Serve ad ottenere un Giocatore
+     * @param p e' la posizione del giocatore
+     * @return il giocatore alla posizione p
      */
     public Giocatore getGiocatore(int p){ return n[p]; }
 
     //Setters
-    /* @param p è la posizione che si vuole settare al giocatore attuale */
+    /**
+     * Serve a settare la posizione
+     * @param p e' la posizione che si vuole settare al giocatore attuale
+     */
     public void setPosizione(int p){ n[turno].setPosizione(p); }
 
-    /* @param b indica di quanto si vuole bloccare il giocatore (3,0,-1) */
+    /**
+     * Setta la variabile bloccato
+     * @param b indica di quanto si vuole bloccare il giocatore (3,0,-1)
+     */
     public void setBloccato(int b){ n[turno].setBloccato(b); }
 
     //
 
-    /* @return boolean true se ci sono posti disponibili per aggiungere un giocatore */
+    /**
+     * Controlla se c'e' posto per un nuovo giocatore
+     * @return boolean true se ci sono posti disponibili per aggiungere un giocatore
+     */
     public boolean checkPosti(){
         if(counter>3){
             for(int i = 0; i<4; i++){
@@ -89,9 +126,10 @@ public class Giocatori implements java.io.Serializable {
         return true;
     }
 
-    /*
-     @param String nome indica il nome che si vuole dare al nuovo giocatore
-     @return String che indica se il giocatore è stato aggiunto, sostituito oppure non c'erano posti
+    /**
+     * Serve ad aggiungere un giocatore nuovo o a sostituirne uno vecchio
+     * @param nome nome indica il nome che si vuole dare al nuovo giocatore
+     * @return stringa che indica se il giocatore è stato aggiunto, sostituito oppure non c'erano posti
      */
     public String aggiungiGiocatore(String nome){
         String sost;
@@ -110,7 +148,10 @@ public class Giocatori implements java.io.Serializable {
         return null;
     }
 
-    /* @param sono i giocatori da caricare, vengono letti dal proprio file di salvataggio in Salvataggio.java */
+    /**
+     * Serve a caricare i giocatori presi da un file di salvataggio
+     * @param g0, g1, g2, g3 =  i giocatori da caricare, vengono letti dal proprio file di salvataggio in Salvataggio.java
+     */
     public void caricaGiocatori(Giocatore g0, Giocatore g1, Giocatore g2, Giocatore g3){
         n[0] = g0;
         n[1] = g1;
@@ -118,7 +159,10 @@ public class Giocatori implements java.io.Serializable {
         n[3] = g3;
     }
 
-    /* @return String getPodio() dopo aver aggiornato la classifica */
+    /**
+     * Fa il controllo di chi e' sul podio e aggiorna la variabile
+     * @return getPodio() dopo aver aggiornato la classifica
+     */
     public String aggiornaPodio(){
         int max = 0;
         for(int i = 0; i<3; i++){
@@ -128,30 +172,42 @@ public class Giocatori implements java.io.Serializable {
         return getPodio();
     }
 
-    /* va avanti di un turno escludendo gli offline */
+    /**
+     * va avanti di un turno escludendo gli offline
+     */
     public void aggiornaTurno(){
         if(turno<3) turno++;
         else turno = 0;
         if(!n[turno].isOnline()) aggiornaTurno();
     }
 
-    /* @return String che dice se il giocatore è ancora bloccato dopo averlo aggiornato */
+    /**
+     * Diminuisce di 1 la variabile bloccato del giocatore
+     * @return stringa che dice se il giocatore e' ancora bloccato dopo averlo aggiornato
+     */
     public String aggiornaBloccato(){
         setBloccato(getBloccato()-1);
         return isBloccato();
     }
 
-    /* setta bloccato = 0 a chi era nel pozzo */
+    /**
+     * setta bloccato = 0 a chi era nel pozzo
+     */
     public void azzeraPozzo(){
         for(int i = 0; i<4; i++){
             if(n[i].getBloccato()==-1) n[i].setBloccato(0);
         }
     }
 
-    /* aumenta le vittorie del giocatore attuale di 1 */
+    /**
+     * aumenta le vittorie del giocatore attuale di 1
+     */
     public void aggiornaVittoria(){ n[turno].setVittorie(n[turno].getVittorie()+1); }
 
-    /* @return muovi() del giocatore attuale */
+    /**
+     * richiama il muovi() del giocatore attuale
+     * @return muovi() del giocatore attuale
+     */
     public String muovi(){ return n[turno].muovi(); }
 
 }

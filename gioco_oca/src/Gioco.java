@@ -1,17 +1,17 @@
 
 import java.util.Scanner;
 
-// In generale mi pare bene, ho messo un paio di commenti qui e là, guardateli
-// UN ALTRO si scrive senza apostrofo
-
-
 public class Gioco {
 
+    /**
+     * giocatore contiene l'oggetto Giocatori che agisce sui giocatori e sui turni
+     * tab contiene il Tabellone che gestisce gli effetti delle caselle
+     */
     private static Giocatori giocatore = new Giocatori();
     private static Tabellone tab = new Tabellone();
 
-    /*
-    Serve solo all'inizio del gioco
+    /**
+     * Serve solo all'inizio del gioco
      */
     public static void inizio(){
         Scanner in = new Scanner(System.in);
@@ -21,7 +21,6 @@ public class Gioco {
         System.out.println("premi 'n' per iniziare una nuova partita");
         do{ key = in.next().charAt(0); }while(key!='n' && key!='c');
         if(key=='c') System.out.println(Salvataggio.carica(giocatore));
-        //Per  permettere la compilazione e le prove fare un metodo carica che non nulla ('mock')
         else{
             System.out.println("Inserisci il tuo nome: ");
             do{ nome = in.nextLine(); }while(nome.isEmpty());
@@ -30,10 +29,10 @@ public class Gioco {
         System.out.println("Buon divertimento!" + "\n");
     }
 
-    /*
-    Rappresenta il menù di gioco
+    /**
+     * Rappresenta il menù di gioco
      */
-    public static void menù(){
+    public static void menu(){
         Scanner in = new Scanner(System.in);
         String nome; char key;
         System.out.println(" ***             Menù             *** ");
@@ -53,7 +52,7 @@ public class Gioco {
                          giocatore.aggiungiGiocatore(nome);
                      }
                      else System.out.println("Limite dei giocatori raggiunto");
-                     menù(); return;
+                     menu(); return;
                  }
                  case 'm' -> {
                      System.out.println(giocatore);
@@ -66,15 +65,15 @@ public class Gioco {
         }while(key!='g');
     }
 
-    /*
-    Gestisce l'intero programma gestendo i turni, i giocatori e richiamando gli effetti delle caselle
+    /**
+     * Gestisce l'intero programma gestendo i turni, i giocatori e richiamando gli effetti delle caselle
      */
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String temp; char key;
         inizio();
         do {
-            menù();
+            menu();
             do {
                 System.out.println("\nè il turno di " + giocatore.getNome() + '!');
                 System.out.println("Premi 'c' per continuare");
@@ -83,7 +82,7 @@ public class Gioco {
                 do {
                     key = in.next().charAt(0);
                 } while (key != 'c' && key != 'm' && key != 'q');
-                if (key == 'm') menù();
+                if (key == 'm') menu();
                 if (key == 'c') {
                     if (giocatore.isBloccato().equals("il giocatore " + giocatore.getNome() + " non è più bloccato")) {
                         System.out.println(giocatore.muovi());

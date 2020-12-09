@@ -72,8 +72,8 @@ public class Gioco {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String temp; char key;
+        inizio();
         do {
-            inizio();
             menù();
             do {
                 System.out.println("\nè il turno di " + giocatore.getNome() + '!');
@@ -92,7 +92,7 @@ public class Gioco {
                             giocatore.aggiornaPodio();
                             key = 'q';
                         }
-                        System.out.println(tab.getPercorso()[giocatore.getN()[giocatore.getTurno()].getPosizione()].
+                        else System.out.println(tab.getPercorso()[giocatore.getN()[giocatore.getTurno()].getPosizione()].
                                 fai_Effetto(giocatore, giocatore.getN(), giocatore.getCounter(),0));
                     } else System.out.println(giocatore.aggiornaBloccato());
                     giocatore.aggiornaTurno();
